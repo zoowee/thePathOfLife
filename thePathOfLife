@@ -1,0 +1,236 @@
+"""
+The Path of Life - Choose Your Own Adventure
+a choose your own adventure game that goes through high school and adulthood
+@Author: Jerica Ju and Ryenn Aidoudi
+@Param: none
+@Date: 09.04.2019
+@Version: 1.0
+"""
+
+def game():
+  greeting()
+  getAge()
+  checkAge()
+
+#option to play again
+def again():
+  print("~~~~~~~")
+  replay = input("You have completed the game. Would you like to play again? Please answer with \033[1;36;49myes\033[0m or \033[1;36;95mno\033[0m. \n")
+  print()
+  #lowercases all letters
+  replay = replay.lower()
+  if (replay == 'yes'):
+    print()
+    print("~~~~~~~")
+    game()
+  elif replay == 'no':
+    print("Bye, hope you had a fun time playing! :)")
+  else:
+    print("For the last time, PLEASE ANSWER CORRECTLY!!!!!")
+    again()
+
+def checkAge():
+  #mature
+  if (age >= 18):
+    mature()
+  #high school life
+  elif (13 <= age <= 18):
+    failing()
+  else:
+    print()
+    print("I dont't care if you are " + str(age)+ ". You are now 17 years old.")
+    failing()
+
+def college():
+  print("You have landed a spot in UCLA.")
+  print()
+  #choice 02 of mature route
+  choice2 = input("There are three majors you are interested in. They are Medical, Computer Science, and Drama. Which one will you choose? Please answer with either \033[1;36;49mmedical\033[0m, \033[1;36;95mcomputer science\033[0m, or \033[1;32;49mdrama\033[0m.\n").lower()
+  if choice2 == 'medical':
+    medical()
+  elif choice2 == 'computer science':
+    computerScience()
+  elif choice2 == 'drama':
+    drama()
+  else:
+    print("Please answer with the correct method")
+    college()
+
+def computerScience():
+  print()
+  print("You have a big coding project, due at the end of the week")
+  choice3 = input("Do you copy your friends \033[1;36;49mcode\033[0m or do it \033[1;36;95myourself\033[0m \n")
+  if choice3 == 'code':
+    dieComp()
+  elif choice3 == 'yourself':
+    win()
+  else:
+    print("Please answer with the correct method.")
+    computerScience()
+
+def dial911():
+  print("~~~~~~~")
+  print("The police come, but they're your exes' parents and try to kill you.")
+  #choice 04 of high school route
+  d = input("Do you \033[1;36;49mrun outside\033[0m or \033[1;36;95mkill them\033[0m? \n").lower()
+  print()
+  #ending 03 of high school route (bad end)
+  if (d == 'run outside'):
+    print("\033[101mYou try to run past them, but they see you and shoot you. You die.\033[0m")
+    again()
+  elif (d == 'kill them'):
+    killThem()
+  else:
+    print("Sorry, please only respond with \033[1;36;49mrun outside\033[0m or \033[1;36;95mkill them\033[0m.")
+    dial911()
+
+def dieComp():
+  print("\033[101mThe professor finds out, both you and your friend get kicked out of college, and you get run over by a motorcycle.\033[0m")
+  again()
+
+def dieDrama():
+  print("\033[101mThe competition realizes you are trying to break their leg, so you get murdered with a sword prop.\033[0m")
+  again()
+
+def dieMed():
+  print("\033[100mThe source is unreliable and you get a 0. You drop out of college and live on your mom's couch for the rest of your miserable life.\033[0m")
+  again()
+
+def drama():
+  print("In order for many people to notice you in the acting business, you have to land at least one lead in any play in college. This time, it is 'Romeo and Juliet'.")
+  choice3 = input("Do you \033[1;36;49minjure\033[0m the competition or \033[1;36;49no\033[0m? \n")
+  print()
+  if choice3 == 'injure':
+    dieDrama()
+  elif choice3 == 'no':
+    win()
+  else:
+    print()
+    print("Please answer with the correct method")
+    drama()
+
+def dropOut():
+  print("Your mom is sad and angry, so she loses her marbles and tries to kill you.")
+  #choice 03 of high school route
+  c = input("Do you \033[1;36;49mdial 911\033[0m or \033[1;36;95mslap her\033[0m? \n").lower()
+  print()
+  if (c == 'dial 911'):
+    dial911()
+  #ending 02 of high school route (bad end)
+  elif (c == 'slap her'):
+    print("\033[101mYour mom gets even madder and chucks a knife at you, causing you to die.\033[0m")
+    again()
+  else:
+    print("Sorry, please only respond with \033[1;36;49mdial 911\033[0m or \033[1;36;95mslap her\033[0m.")
+    dropOut()
+
+def failing():
+  #choice 01 of high school route
+  a = input("Your grades are way below average. Do you get a \033[1;36;49mtutor\033[0m or \033[1;36;95mdrop out\033[0m? \n").lower()
+  if (a == 'tutor'):
+    tutor()
+  elif (a == 'drop out'):
+    dropOut()
+  else:
+    print("Sorry, please only respond with \033[1;36;49mtutor\033[0m or \033[1;36;95mdrop out\033[0m.")
+    print("~~~~~~~")
+    failing()
+
+def greeting():
+  print()
+  print ("\033[104m▀▀█▀▀ █  █ █▀▀\033[0m 　  \033[1;36;49m█▀▀█ █▀▀█ ▀▀█▀▀ █  █\033[0m")
+  print (" \033[104m █   █▀▀█ █▀▀\033[0m 　  █▀▀▀ █▄▄█   █   █▀▀█")
+  print (" \033[104m ▀   ▀  ▀ ▀▀▀\033[0m 　  \033[1;36;49m▀    ▀  ▀   ▀   ▀  ▀\033[0m")
+  print()
+  print ("          \033[105m█▀▀█ █▀▀\033[0m 　  █     ▀  █▀▀ █▀▀")
+  print ("          \033[105m█  █ █▀▀\033[0m 　  \033[1;36;95m█  ▄  █  █▀▀ █▀▀\033[0m")
+  print ("          \033[105m▀▀▀▀ ▀ \033[0m      ▀▀▀▀  ▀  ▀   ▀▀▀")
+  print()
+  print("~~~~~~~\n START \n~~~~~~~")
+  name = input("Welcome to The Path of Life! What is your name? \n")
+  print()
+  print("Hello there, " + name + "!")
+  print()
+
+def getAge():
+  global age
+  try:
+    age = int(input("How old are you? \n"))
+    print("~~~~~~~")
+  except:
+    print("Please enter a valid age.")
+    print()
+    getAge()
+
+def killThem():
+  print("You grab a knife and stab both of them, and they die. Your dad comes home with another woman, directing your mom's attention to the newcomers instead.")
+  #choice 05 of high school route
+  e = input("Your mom, the mistress, and dad start arguing. Do you stay to \033[1;36;49mlisten\033[0m or \033[1;36;95mrun\033[0m away? \n").lower()
+  #ending 04 of high school route (neutral end)
+  if (e == 'listen'):
+    print("\033[100mThe mistress and your mom both leave your dad, your dad leaves by himself, and you get the house to yourself. You dispose of the dead people and live an average life.\033[0m")
+    again()
+  #ending 05 of high school route (bad end)
+  elif (e == 'run'):
+    print("\033[101mYou run outside but forget to look both ways when crossing the street, so a car runs you over.\033[0m")
+    again()
+  else:
+    print("Sorry, please only respond with \033[1;36;49mlisten\033[0m or \033[1;36;49mrun\033[0m.")
+    killThem()
+
+def mature():
+  print("~~~~~~~")
+  #choice 01 of mature route
+  choice1 = input("You have completed high school. Do you want to attend college or not? Please answer with \033[1;36;49myes\033[0m or \033[1;36;95mno\033[0m.\n").lower()
+  print()
+  if choice1 == "yes":
+   college()
+  elif choice1 == 'no':
+    print("\033[101mYou decided not go into college, couldn't land even a job at McDonalds, and died homeless and alone. Sorry!\033[0m")
+    again()
+  else:
+    print()
+    print("Please answer with the correct method.")
+    mature()
+
+def medical():
+  print("~~~~~~~")
+  print("You have a medical paper based on neural anatomy due at the end of the month, but you fell asleep in class and didn't take any of the notes.")
+  print()
+  #choice 03 of mature route
+  choice3 = input("You have 2 weeks left. Do you spend your time \033[1;36;49mresearch\033[0ming the entire subject, or do you find a source \033[1;36;95monline\033[0m? \n").lower()
+  print()
+  if choice3 == 'research':
+    win()
+  elif choice3 == 'online':
+    dieMed()
+  else:
+    print()
+    print("Please answer with the correct method.")
+    medical()
+
+def tutor():
+  print("~~~~~~~")
+  print("Uh oh! Your tutor is Satan's daughter and is trying to eat you.")
+  #choice 02 of high school route
+  b = input("Do you call the \033[1;36;49mpolice\033[0m or your \033[1;36;95mparents\033[0m? \n").lower()
+  #continues story to mature
+  if (b == 'police'):
+    print()
+    print("\033[101mThe police walk you through how to get a knife and stab her. You get a new tutor and pass high school.\033[0m")
+    mature()
+  #ending 01 of high school route (bad end)
+  elif (b == 'parents'):
+    print()
+    print("\033[101mYour parents are too busy yelling at you for your grades to listen to what you're saying. The tutor throws paper airplanes at you and you die of paperuts.\033[0m")
+    again()
+  else:
+    print()
+    print("Sorry, please only respond with \033[1;36;49mpolice\033[0m or \033[1;36;95mparents\033[0m.")
+    tutor()
+
+def win():
+  print("\033[102mSuccess! You live a happy and successful life!\033[0m")
+  again()
+
+game()
